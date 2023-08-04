@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>temp converter</title>
+</head>
+<style>
+    body{
+        background-image: url('ap.jpg');
+        background-size: cover;
+        padding: 120px 30px;
+    }
+    h1{
+        text-align: center;
+    }
+    #container{
+        text-align: center;
+        background-color: rgb(112, 155, 155); 
+         padding: 50px 200px;
+    }
+    .input{
+        display: inline block;
+    }
+    .in{
+        padding: 5px 10px;
+        margin: 10px;
+        font-weight: bold;
+        text-align: center;
+    } 
+    label{
+        font-size: 22px;
+        color: rgb(130, 30, 132);
+    }
+    
+    
+</style>
+<body>
+    <h1>Tempreature Converter</h1>
+    <div id="container">
+        <div class="input">
+        <label >Celsius</label>
+         <input type="number" value="0" id="cel" class="in">
+        </div>
+        <div class="input">
+            <label >Kelvin</label>
+            <input type="number" value="273.15" id="kel" class="in">  
+        </div>
+        <div class="input">
+            <label> Fahrenheit </label>
+         <input type="number" value="32" id="far" class="in">
+    </div>
+    <script>
+        var cel=document.getElementById("cel")    //declaring the variable
+        var kel=document.getElementById("kel")
+        var far=document.getElementById("far")
+        function roundnumber(number){
+            return Math.round(number*100)/100
+        }
+        cel.addEventListener('click',function(){
+            let c=parseFloat(cel.value)
+            let f=(c*(9/5))+32
+            let k=c+273.15
+            far.value=roundnumber(f)
+            kel.value=roundnumber(k)
+
+        })
+        kel.addEventListener('click',function(){
+            let k=parseFloat(kel.value)
+            let c=k-273.15
+            let f=((k-273.15)*(9/5))+32
+            cel.value=c
+            far.value=f
+
+        })
+        far.addEventListener('click',function(){
+            let f=parseFloat(far.value)
+            let k=((f-32)*(9/5))+273.15
+            let c=(f-32)*(5/9)
+            kel.value=k
+            cel.value=c
+
+        })
+
+    </script>
+</body>
+</html>
